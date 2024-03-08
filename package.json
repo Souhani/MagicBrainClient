@@ -1,6 +1,6 @@
 {
   "name": "facerecognitionbrain",
-  "homepage": "https://souhani.github.io/smartBrainAppDockerized",
+  "homepage": "https://souhani.github.io/SmartBrainAppDockerized",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
