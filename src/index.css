@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Courier", Courier, nonospace,
+  font-family:  "Courier", Courier, nonospace,
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -16,4 +16,8 @@ code {
 button{
 
 	cursor: pointer;
+}
+
+.black-hover:hover {
+  background-color: #000 !important;
 }

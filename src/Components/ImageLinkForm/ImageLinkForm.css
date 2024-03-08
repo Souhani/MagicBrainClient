@@ -6,6 +6,23 @@ linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
 linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
 linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,
 linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,
-#36c;
+rgb(168, 51, 204);
 background-size: 15px 30px;
+}
+button {
+	padding: 10px 30px;
+	background: rgb(255, 0, 255);
+	border: 1px solid white;
+	border-radius: 2px !important;
+	color: white;
+	font-weight: 500;
+	font-family: Montserrat, sans-serif !important;
+	font-size: 15px !important;
+	cursor: pointer;
+}
+button:hover {
+	background: rgb(212, 0, 212);
+	border-radius: 0px !important;
+	font-weight: 700;
+	transition: 0.3s;
 }

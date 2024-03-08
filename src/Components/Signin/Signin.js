@@ -12,39 +12,58 @@ constructor(){
     }
   } ;
 
-onEmailChange = (event) =>{
+onEmailChange = (event) => {
 	this.setState({signInEmail : event.target.value})
 };
 
-onPasswordChange = (event) =>{
+onPasswordChange = (event) => {
 	this.setState({signInPassword : event.target.value})
 };
 
-onSubmitSignIn = ()=>{
+saveAuthTokenSession = (token) => {
+	window.sessionStorage.setItem('token', token)
+}
 
-  fetch('https://smartbrainapi-test.onrender.com/signin', {
-  	method: 'post',
-  	headers: {'Content-Type': 'application/json'},
-    body:JSON.stringify({
-    	email: this.state.signInEmail,
-    	password: this.state.signInPassword
-    })})
-    .then(res => res.json())
-    .then(user => {
-    	if(user.id){
-    	  this.props.onRouteChange('home')
-           this.props.loadUser(user)
-    }
-    } )
-               
+onSubmitSignIn = () => {
+	if (window.sessionStorage.getItem('token')) {
+	  window.sessionStorage.removeItem('token');
+	}
+	fetch(`http://3.83.96.106:443/signin`, {
+	  method: 'post',
+	  headers: { 'Content-Type': 'application/json' },
+	  body: JSON.stringify({
+		email: this.state.signInEmail,
+		password: this.state.signInPassword
+	  })
+	})
+	.then(res => res.json())
+	  .then(data => {
+		if (data.success) {
+		  this.saveAuthTokenSession(data.token);
+		  fetch(`http://3.83.96.106:443/profile/${data.userId}`, {
+			method: 'get',
+			headers: {
+			  'Content-Type': 'application/json',
+			  'Authorization': data.token
+			}
+		  })
+			.then(res => res.json())
+			.then(user => {
+			  if (user && user.email) {
+				this.props.loadUser(user);
+				this.props.onRouteChange('home');
+			  }
+			})
+			.catch(err => console.log(err)); // handle error here
+		}
+	  })
+	  .catch(err => console.log(err)); // handle error here
+  };
   
-
-
-};
 	render(){
     const  {onRouteChange} = this.props;
 	  return(  
-		<article className="br3 ba  mv4 b--black-10 mv4 w-100 w-50-m w-25-l  shadow-5 center">
+		<article className="br3 ba  mv4 b--black-10 mv4  w-50-m w-25-l  shadow-5 center">
 		 <main className="pa4 black-80">
 		  <div className="measure">
 		    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -52,7 +71,7 @@ onSubmitSignIn = ()=>{
 		      <div className="mt3">
 		        <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
 		        <input 
-		        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+		        className="black-hover pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
 		        type="email"
 		        name="email-address"
 		        id="email-address" 
@@ -62,7 +81,7 @@ onSubmitSignIn = ()=>{
 		      <div className="mv3">
 		        <label className="db fw6 lh-copy f6" htmlFor="password" >Password</label>
 		        <input 
-		        className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+		        className="black-hover b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
 		        type="password"
 		        name="password"
 		        id="password" 

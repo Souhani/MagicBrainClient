@@ -5,12 +5,13 @@ const Rank = ({name, entries})=>{
 
 	return(
 
-    <div>
-        <div className="white f3" >
-          {name+', your current rank is...'}
-        </div>
-        <div className="white f1" >
-          {entries}
+    <div className="mt3">
+        <div className="white f3" style={{fontWeight: "bold"}} >
+          {name.toUpperCase()+', you tested '}
+          <span className="white f2 " >
+          {entries +" "}
+        </span>
+        pictures.
         </div>
     </div>
 		);

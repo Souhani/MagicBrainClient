@@ -2,21 +2,21 @@ import React from 'react';
 import "./ImageLinkForm.css"
 
 
-const ImageLinkForm = ({onInputChange,onButonSubmit})=>{
+const ImageLinkForm = ({onInputChange,onButonSubmit, loading})=>{
 
 	return(
-      <div >
-        <p className='f3'>
-          {'This Magic Brain will detecy faces in your pictures. Give it a try'}
+      <div className="">
+        <p className='f3 ' style={{fontWeight: "bold"}}>
+          {'This Magic Brain will detect faces and sentiments in your pictures. Give it a try.'}
         </p>
-        <div className='center'>
+        <div className='center mx-4'>
          <div className = 'pa4 br3 shadow-5 center form'>
-		    <input className='f4 pa2 w-70'type ='text'
+		    <input className='f4 pa2 w-70 mr1'type ='text'
                onChange={onInputChange} />
 		    <button 
-        className = 'w-30 grow link ph3 pv2 dib white bg-light-purple'
+        className = ''
         onClick={onButonSubmit}
-         >Detect</button>
+         >{loading ? "Loading..." : "Detect"}</button>
 		 </div>
 		</div>
 
