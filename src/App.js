@@ -9,7 +9,7 @@ import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
 import Rank from './Components/Rank/Rank';
 import Modal from './Components/Modal/Modal';
 import Profile from './Components/Profile/Profile'
-//  import ParticlesBackground  from "./Components/Particles/ParticlesBackground";
+ import ParticlesBackground  from "./Components/Particles/ParticlesBackground";
 
 const initialState = {
   loading: false,
@@ -155,7 +155,7 @@ class App extends  Component {
   return (
     <div className="App">
       <div className="fixed" style={{height:"100vh", width:"100%", zIndex:"-9999"}}>
-    {/* <ParticlesBackground/> */}
+    <ParticlesBackground/>
       </div>
       <Navigation
        SignedIn = {SignedIn}
