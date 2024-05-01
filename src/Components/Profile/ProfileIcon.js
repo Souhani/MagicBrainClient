@@ -13,7 +13,7 @@ const ProfileIcon = ({ onRouteChange, toggleModal }) => {
     
     const handleSignOut = () => {
       if (window.sessionStorage.getItem('token')) {
-        fetch('https://smartbrainapi-00c66c6e2818.herokuapp.com/signout', {
+        fetch('https://dockerized-magicbrainapi.onrender.com/signout', {
           method: 'get',
           headers: {
             'Content-Type': 'application/json',

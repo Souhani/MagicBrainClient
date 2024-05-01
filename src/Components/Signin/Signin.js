@@ -28,7 +28,7 @@ onSubmitSignIn = () => {
 	if (window.sessionStorage.getItem('token')) {
 	  window.sessionStorage.removeItem('token');
 	}
-	fetch(`https://smartbrainapi-00c66c6e2818.herokuapp.com/signin`, {
+	fetch(`https://dockerized-magicbrainapi.onrender.com/signin`, {
 	  method: 'post',
 	  headers: { 'Content-Type': 'application/json' },
 	  body: JSON.stringify({
@@ -40,7 +40,7 @@ onSubmitSignIn = () => {
 	  .then(data => {
 		if (data.success) {
 		  this.saveAuthTokenSession(data.token);
-		  fetch(`https://smartbrainapi-00c66c6e2818.herokuapp.com/profile/${data.userId}`, {
+		  fetch(`https://dockerized-magicbrainapi.onrender.com/profile/${data.userId}`, {
 			method: 'get',
 			headers: {
 			  'Content-Type': 'application/json',

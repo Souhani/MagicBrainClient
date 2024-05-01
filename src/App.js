@@ -9,7 +9,7 @@ import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
 import Rank from './Components/Rank/Rank';
 import Modal from './Components/Modal/Modal';
 import Profile from './Components/Profile/Profile'
- import ParticlesBackground  from "./Components/Particles/ParticlesBackground";
+//  import ParticlesBackground  from "./Components/Particles/ParticlesBackground";
 
 const initialState = {
   loading: false,
@@ -48,7 +48,7 @@ class App extends  Component {
    }
 
  componentDidMount () {
-  fetch(`https://smartbrainapi-00c66c6e2818.herokuapp.com/signin`, {
+  fetch(`https://dockerized-magicbrainapi.onrender.com/signin`, {
   	method: 'post',
   	headers: {
       'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ class App extends  Component {
     }})
    .then(res => res.json())
    .then(data => {if(data && data.id){
-     fetch(`https://smartbrainapi-00c66c6e2818.herokuapp.com/profile/${data.id}`, {
+     fetch(`https://dockerized-magicbrainapi.onrender.com/profile/${data.id}`, {
       method: 'get',
   	  headers: {
       'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ class App extends  Component {
      this.setState({imgUrl : this.state.input });
      this.setState({loading:true})
      fetch(
-      `https://smartbrainapi-00c66c6e2818.herokuapp.com/imageUrl/${this.state.user.id}`,
+      `https://dockerized-magicbrainapi.onrender.com/imageUrl/${this.state.user.id}`,
        { method: 'put',
          headers: {
           'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ class App extends  Component {
               this.setState({loading:false})
               this.setState({sentiment:response.face_sentiment.outputs[0].data.concepts[0].name});
               window.scrollTo(0, document.body.scrollHeight)
-              fetch(`https://smartbrainapi-00c66c6e2818.herokuapp.com/image/${this.state.user.id}`, {
+              fetch(`https://dockerized-magicbrainapi.onrender.com/image/${this.state.user.id}`, {
                 method: 'put',
                 headers: {
                   'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ class App extends  Component {
   return (
     <div className="App">
       <div className="fixed" style={{height:"100vh", width:"100%", zIndex:"-9999"}}>
-    <ParticlesBackground/>
+    {/* <ParticlesBackground/> */}
       </div>
       <Navigation
        SignedIn = {SignedIn}

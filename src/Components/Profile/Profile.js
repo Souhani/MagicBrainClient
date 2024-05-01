@@ -22,7 +22,7 @@ const Profile = ({ isPrrofileOpen, toggleModal, user, loadUser }) => {
     }
   }
   const onUpdateProfile = (data) => {
-    fetch(`https://smartbrainapi-00c66c6e2818.herokuapp.com/profile/${user.id}`, {
+    fetch(`https://dockerized-magicbrainapi.onrender.com/profile/${user.id}`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
