@@ -1,6 +1,6 @@
 {
-  "name": "facerecognitionbrain",
-  "homepage": "https://souhani.github.io/SmartBrainAppDockerized",
+  "name": "MagicBrainClient",
+  "homepage": "https://souhani.github.io/MagicBrainClient",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
